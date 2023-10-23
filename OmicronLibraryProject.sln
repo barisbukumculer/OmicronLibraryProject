@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmicronLibraryProject", "OmicronLibraryProject\OmicronLibraryProject.csproj", "{16467B28-1748-41B1-ACDC-56B0157C0D2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16467B28-1748-41B1-ACDC-56B0157C0D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16467B28-1748-41B1-ACDC-56B0157C0D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16467B28-1748-41B1-ACDC-56B0157C0D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16467B28-1748-41B1-ACDC-56B0157C0D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAB6D4F0-6140-4FEF-B0CD-450B3DE405A2}
+	EndGlobalSection
+EndGlobal

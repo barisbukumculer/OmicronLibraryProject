@@ -1,0 +1,170 @@
+﻿@using OmicronLibraryProject.Models
+@model List<Book>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_mainLayout.cshtml";
+	int count = 0;
+}
+
+
+<div class="inner_content_w3_agile_info two_in">
+	<h2 class="w3_inner_tittle">Ana Sayfa</h2>
+	<!-- tables -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="box">
+					<a href="/Book/BorrowBook" class="btn btn-primary btn-lg btn-block large-btn">Kitabı Ver</a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="box">
+					<a href="/Book/ReturnBook" class="btn btn-success btn-lg btn-block large-btn">Kitabı İade Al</a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="box">
+					<a href="/Report/LibraryReport" class="btn btn-info btn-lg btn-block large-btn">Rapor</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="allBooks">
+		<h2>Tüm Kitaplar</h2>
+		<ul id="allBooksList"></ul>
+	</div>
+	@*<div class="agile-tables">
+		<div class="w3l-table-info agile_info_shadow">
+			<h3 class="w3_inner_tittle two">Kütüphanedekİ Tüm Kİtaplar</h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>ISBN</th>
+						<th>Kitap Adı</th>
+						<th>Yazarı</th>
+						<th>Durumu</th>
+						<th>Güncelle</th>
+						<th>Sil</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						count++;
+						<tr>
+							<td>@count</td>
+							<td>@item.ISBN</td>
+							<td>@item.Title</td>
+							<td>@item.Author</td>
+
+							@if (item.IsAvailable == true)
+							{
+								<td>
+									Mevcut
+								</td>
+							}
+							else
+							{
+								<td>
+									Ödünç Verildi.
+								</td>
+							}
+							<td><a class="btn btn-primary" href="#">Güncelle</a></td>
+							<td><a class="btn btn-danger" href="#">Sil</a></td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+
+	</div>*@
+	<!-- //tables -->
+	<!-- /social_media-->
+	<!-- //social_media-->
+</div>
+<script>
+	$(document).ready(function () {
+		$.ajax({
+			url: '/api/book/allBooks',
+			method: 'GET',
+			dataType: 'json',
+			success: function (data) {
+				var allBooksList = $('#allBooksList');
+				data.forEach(function (book) {
+					allBooksList.append('<li>' + book.Title + '</li>');
+				});
+			},
+			error: function () {
+				alert('Tüm kitaplar yüklenemedi.');
+			}
+		});
+</script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+
+<script src="js/classie.js"></script>
+<script src="js/gnmenu.js"></script>
+<script>
+	new gnMenu(document.getElementById('gn-menu'));
+</script>
+<!-- tables -->
+
+<script type="text/javascript" src="js/jquery.basictable.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#table').basictable();
+
+		$('#table-breakpoint').basictable({
+			breakpoint: 768
+		});
+
+		$('#table-swap-axis').basictable({
+			swapAxis: true
+		});
+
+		$('#table-force-off').basictable({
+			forceResponsive: false
+		});
+
+		$('#table-no-resize').basictable({
+			noResize: true
+		});
+
+		$('#table-two-axis').basictable();
+
+		$('#table-max-height').basictable({
+			tableWrapper: true
+		});
+	});
+</script>
+<!-- //js -->
+<script src="js/screenfull.js"></script>
+<script>
+	$(function () {
+		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+		if (!screenfull.enabled) {
+			return false;
+		}
+
+
+
+		$('#toggle').click(function () {
+			screenfull.toggle($('#container')[0]);
+		});
+	});
+</script>
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/scripts.js"></script>
+
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+<style>
+	.large-btn {
+		font-size: 24px;
+		padding: 20px; 
+		margin: 10px; 
+		width:200px;
+	}
+</style>

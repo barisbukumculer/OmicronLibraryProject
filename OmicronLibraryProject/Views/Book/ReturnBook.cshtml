@@ -1,0 +1,31 @@
+﻿@model BorrowBookModel
+@{
+    ViewData["Title"] = "ReturnBook";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1>İade Ekranı</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="ReturnBook" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserTC" class="control-label">Kullanıcı TC Kimlik Numarası:</label>
+                <input asp-for="UserTC" class="form-control" />
+                <span asp-validation-for="UserTC" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Kitabı İade Et" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

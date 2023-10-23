@@ -1,0 +1,22 @@
+﻿@model BorrowBookModel
+@{
+    ViewData["Title"] = "BorrowBook";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1>Kitap Ödünç Verme İşlemi</h1>
+<br />
+<div>
+    <form asp-controller="Book" asp-action="BorrowBook" method="post">
+        <div class="form-group">
+            <label for="UserTC">Kullanıcı TC Kimlik Numarası:</label>
+            <input type="text"name="UserTC" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="ISBNNo">Kitap ISBN Numarası:</label>
+            <input type="text" name="ISBN" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Kitabı Ödünç Ver</button>
+    </form>
+
+</div>

@@ -1,0 +1,29 @@
+﻿@model List<LibraryReportItem>
+@{
+    ViewData["Title"] = "LibraryReport";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h2>Kütüphane Dışında Geçirilen Süreler Raporu</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Kitap Adı</th>
+            <th>Kişi TC Kimlik</th>
+            <th>Toplam Süre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ISBN</td>
+                <td>@item.BookTitle</td>
+                <td>@item.userTC</td>
+                <td>@item.TimeOutsideLibrary.TotalHours saattir kişiye zimmetli.</td>
+            </tr>
+        }
+    </tbody>
+</table>

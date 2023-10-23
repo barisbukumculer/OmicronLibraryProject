@@ -1,0 +1,60 @@
+﻿@model List<Loan>
+
+@{
+    ViewData["Title"] = "Process Return";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h2>Ödünç İade İşlemi</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Ödünç Alma Id</th>
+            <th>Alan Kişinin Adı Soyadı</th>
+            <th>Alan Kişinin TC'si</th>
+            <th>Kitap Adı</th>
+            <th>Ödünç Alma Tarihi</th>
+            <th>İade Tarihi</th>
+            <th>İade İşlemi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loan in Model)
+        {
+            <tr>
+                <td>@loan.LoanId</td>
+                <td>  @loan.User.Name @loan.User.Surname </td>
+                <td>  @loan.User.TCIdentityNumber  </td>
+                <td> @loan.Book.Title    </td>
+                <td>@loan.BorrowedDate</td>
+                <td> 
+                    @if (loan.Book.IsAvailable == false)
+                    {
+                        <h5>Kitap halen ilgili kişide.</h5>
+                    }
+                    else
+                    {
+                        @loan.Book.ReturnedDate
+                    }
+               </td>
+                <td>
+                    @if (loan.Book.IsAvailable == false)
+                    {
+                        <form asp-action="ReturnBook" asp-controller="Book" asp-route-loanId="@loan.LoanId" method="post">
+                            <button type="submit" class="btn btn-primary">İade Al</button>
+                        </form>
+                    }
+                        else
+                    {
+                        <form asp-action="BorrowBook" asp-controller="Book" asp-route-loanId="@loan.LoanId" method="post">
+                            <button type="submit" class="btn btn-primary">Ver</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
