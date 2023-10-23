@@ -1,0 +1,46 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<h1>Sisteme Kayıtlı Kullanıcılar</h1>
+<br />
+<div class="agile-tables">
+	<div class="w3l-table-info agile_info_shadow">
+		<h3 class="w3_inner_tittle two">Tüm Kullanıcı Bilgileri</h3>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Ad</th>
+					<th>Soyad</th>
+					<th>TC</th>
+					<th>Yaş</th>
+					<th>Adres</th>
+					<th>Güncelle</th>
+					<th>Sil</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					
+					<tr>
+						<td>@item.Id</td>
+						<td>@item.Name</td>
+						<td>@item.Surname</td>
+						<td>@item.TCIdentityNumber</td>
+						<td>@item.Age</td>
+						<td>@item.Adress</td>
+
+						<td><a class="btn btn-primary" href="#">Güncelle</a></td>
+						<td><a class="btn btn-danger" href="#">Sil</a></td>
+					</tr>
+				}
+
+			</tbody>
+		</table>
+	</div>
+
+</div>

@@ -126,27 +126,35 @@ namespace OmicronLibraryProject.Controllers
         [HttpPost]
         public IActionResult ReturnBook(string ISBN,int id)
         {
-            var book = _bookService.GetByISBN(ISBN);
-            var loan = _loanService.GetById(id);
-            
-            if (book != null)
-            {
-                book.IsAvailable = true;
-                loan.ReturnedDate = DateTime.Now;
-                book.ReturnedDate = DateTime.Now;
-               
-                _bookService.Update(book);
-                _loanService.Update(loan);
+			var book = _bookService.GetByISBN(ISBN);
+			var loan = _loanService.GetById(id);
 
-                return RedirectToAction("processreturn", "return");
-            }
-            else
-            {
-                ModelState.AddModelError("ISBN", "Kitap bulunamadı.");
-                return View();
-            }
+			if (book != null)
+			{
+				book.IsAvailable = true;
+				if (loan != null)
+				{
+					loan.ReturnedDate = DateTime.Now;
+					book.ReturnedDate = DateTime.Now;
+				}
+				book.ReturnedDate = DateTime.Now;
 
-        }
+				_bookService.Update(book);
+
+				if (loan != null)
+				{
+					_loanService.Update(loan);
+				}
+
+				return RedirectToAction("ProcessReturn", "Return");
+			}
+			else
+			{
+				ModelState.AddModelError("ISBN", "Kitap bulunamadı.");
+				return View();
+			}
+
+		}
     }
  }
 
